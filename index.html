@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="企财智策：将财务三表导入、核验、经营分析与可追溯报告连接起来。支持年度、月度、季度项目，示范体验与自有数据清晰区分。">
+  <meta name="theme-color" content="#0c151c">
+  <meta property="og:title" content="企财智策｜从财务数据到经营判断">
+  <meta property="og:description" content="从看清数据，到理解经营，再到留下有据可查的判断。">
+  <link rel="icon" href="./system-logo-square.png" type="image/png">
+  <link rel="stylesheet" href="./assets/home-unified.css">
+  <link rel="stylesheet" href="./assets/home-cinema-bridge.css">
+  <script defer src="./assets/home-unified.js"></script>
+  <script defer src="./assets/home-cinema-bridge.js"></script>
+  <title>企财智策｜从财务数据到经营判断</title>
+</head>
+<body>
+  <a class="skip" href="#main">跳转到主要内容</a>
+  <div class="top-progress" aria-hidden="true"><span id="progress"></span></div>
+  <header class="site-header" id="header">
+    <div class="nav-wrap container">
+      <a class="brand" href="#top" aria-label="企财智策，返回首页顶部">
+        <img src="./system-logo-square.png" width="42" height="42" alt="">
+        <span class="brand-name">企财智策<small>财务决策分析系统</small></span>
+      </a>
+      <nav class="nav-main" id="navMain" aria-label="主导航">
+        <a href="#capabilities">核心能力</a>
+        <a href="#workflow">工作方式</a>
+        <a href="#scope">适用范围</a>
+      </nav>
+      <a class="nav-enter" href="/workspace/journey">进入工作台 <span aria-hidden="true">↗</span></a>
+      <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="navMain" aria-label="展开导航"><span></span><span></span></button>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="hero-mesh" aria-hidden="true"></div>
+      <div class="hero-constellation" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-line"><span class="small-orbit"></span><span>从财务数据，到经营判断</span></div>
+          <h1 id="heroTitle">看清财务全貌。<br><span>再决定下一步。</span></h1>
+          <p class="hero-intro">不止于生成一张报表。从三表导入与核验，到经营分析、证据追溯和报告输出，让每一步判断都有可以回看的依据。</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="/workspace/journey">体验示范企业 <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-secondary" href="/workspace/ingest">用我的数据开始 <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-meta" aria-label="产品核心特性"><span>支持 年 / 季 / 月</span><i></i><span>本地数据项目</span><i></i><span>可追溯报告</span></div>
+        </div>
+        <div class="hero-visual" aria-label="系统工作流程界面示意，可切换查看不同工作环节">
+          <div class="visual-atmosphere" aria-hidden="true"></div>
+          <div class="orbit orbit-1" aria-hidden="true"></div><div class="orbit orbit-2" aria-hidden="true"></div>
+          <div class="visual-spark one" aria-hidden="true"></div><div class="visual-spark two" aria-hidden="true"></div>
+          <div class="product-window">
+            <div class="window-top"><span class="window-brand"><span class="window-mark"></span> 企财智策 <small>/ 工作台概览</small></span><span class="window-mode">演示流程</span></div>
+            <div class="window-content">
+              <aside class="window-side" aria-hidden="true"><span class="side-dot selected"></span><span class="side-dot"></span><span class="side-dot"></span><span class="side-dot"></span><span class="side-dot"></span></aside>
+              <div class="window-stage">
+                <div class="window-head"><span id="stageEyebrow">01 / DATA FOUNDATION</span><span class="window-tiny-dot"></span></div>
+                <h2 id="stageTitle">先理解数据，<br>才谈得上分析。</h2>
+                <p id="stageDesc">连接三张报表，核对字段、期间与勾稽关系。</p>
+                <div class="stage-content" id="stageContent" aria-live="polite">
+                  <div class="statement-grid">
+                    <div class="statement"><span class="st-icon">≡</span><strong>资产负债表</strong><span class="st-bar"></span></div>
+                    <div class="statement"><span class="st-icon">⌁</span><strong>利润表</strong><span class="st-bar"></span></div>
+                    <div class="statement"><span class="st-icon">↗</span><strong>现金流量表</strong><span class="st-bar"></span></div>
+                  </div>
+                  <div class="process-line"><span class="node active">原始材料</span><b>→</b><span class="node active">口径核验</span><b>→</b><span class="node">开始分析</span></div>
+                </div>
+                <div class="window-foot"><span><i></i> 结构示意 · 不含真实企业财务数据</span><span>FINANCIAL WORKSPACE</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="visual-float float-a" aria-hidden="true"><span class="float-mark">✓</span><div><strong>先核验，再分析</strong><small>来源 / 期间 / 勾稽</small></div></div>
+          <div class="visual-float float-b" aria-hidden="true"><span class="float-line"></span><span>数据与结论之间<br><b>有迹可循</b></span></div>
+          <div class="stage-switch" role="tablist" aria-label="预览不同工作环节">
+            <button class="stage-tab active" type="button" role="tab" aria-selected="true" data-stage="0">数据核验</button>
+            <button class="stage-tab" type="button" role="tab" aria-selected="false" data-stage="1">经营分析</button>
+            <button class="stage-tab" type="button" role="tab" aria-selected="false" data-stage="2">报告追溯</button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-bottom container"><span>让复杂的财务工作，回到清晰、有据可查的判断。</span><a href="#capabilities" aria-label="向下了解核心能力">向下了解 <span aria-hidden="true">↓</span></a></div>
+    </section>
+
+    <div class="quality-strip" aria-label="产品设计原则"><div class="container quality-grid"><span>资料来源有记录</span><span>财务口径可校验</span><span>期间变化可比较</span><span>分析结果可回溯</span></div></div>
+    <section class="cinematic-scroll cinematic-three" id="three-statement-journey" aria-labelledby="threeStatementTitle">
+      <div class="cinematic-sticky">
+        <div class="cinematic-fallback three-fallback" aria-hidden="true">
+          <div class="fallback-plane plane-one"><span>资产负债表</span><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="fallback-plane plane-two"><span>利润表</span><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="fallback-plane plane-three"><span>现金流量表</span><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="cinema-frame" data-cinema="statements" aria-hidden="true"></div>
+        <div class="cinematic-vignette" aria-hidden="true"></div>
+        <div class="cinematic-copy container">
+          <span class="cinematic-kicker">财务三表 · 同一幅经营图景</span>
+          <h2 id="threeStatementTitle">三张报表。<br><em>一条完整线索。</em></h2>
+          <p>穿过资产、利润与现金流，从分散的财务材料走向彼此关联的经营事实。</p>
+          <div class="cinematic-current" aria-live="off"><span class="cinema-accent-dot"></span><strong id="cinemaStatementName">资产负债表</strong></div>
+        </div>
+        <div class="cinematic-progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <section class="section capabilities" id="capabilities" aria-labelledby="capabilitiesTitle">
+      <div class="container">
+        <div class="section-heading"><span class="eyebrow"><span class="eyebrow-line"></span> 核心能力</span><h2 id="capabilitiesTitle">真正有价值的分析，<br><em>始于可信的数据。</em></h2><p>不是把功能堆成菜单，而是将财务工作的关键环节接成一条清晰的链路。</p></div>
+        <div class="feature-grid">
+          <article class="feature feature-large">
+            <div class="feature-content"><div class="feature-index">01 <span>数据基础</span></div><h3>三表汇合，<br>先把来路讲清楚。</h3><p>支持年度及独立月度、季度项目，核对字段映射、金额单位、期间完整性与会计关系。</p></div>
+            <div class="file-diagram" aria-label="资产负债表、利润表和现金流量表进入一致性检查"><div class="file-layers"><span>资产负债表</span><span>利润表</span><span>现金流量表</span></div><div class="file-link"></div><div class="file-verify"><div class="verify-symbol">✓</div><span>字段与口径核验</span><small>异常优先呈现</small></div></div>
+          </article>
+          <article class="feature feature-period">
+            <div class="feature-content"><div class="feature-index">02 <span>经营变化</span></div><h3>从年度趋势，<br>看到期间的变化。</h3><p>按年、季度、月份观察经营数据。不把累计值误作当期值，也不为缺失月份虚构数据。</p></div>
+            <div class="period-graph" aria-hidden="true"><svg viewBox="0 0 420 152" preserveAspectRatio="none"><path class="graph-grid" d="M0 38 H420 M0 76 H420 M0 114 H420"/><path class="graph-shadow" d="M0 125 C45 116 67 125 110 93 S173 101 210 70 S289 96 318 56 S372 69 420 27 L420 152 L0 152Z"/><path class="graph-line" d="M0 125 C45 116 67 125 110 93 S173 101 210 70 S289 96 318 56 S372 69 420 27"/><circle cx="318" cy="56" r="5" /></svg><div class="graph-terms"><span>YEAR</span><span>QUARTER</span><span>MONTH</span></div></div>
+          </article>
+          <article class="feature feature-evidence">
+            <div class="feature-content"><div class="feature-index">03 <span>报告与证据</span></div><h3>每个结论，<br>都应经得起回看。</h3><p>从指标回到公式、来源和期间，保存项目与分析材料，导出可交付的报告。</p></div>
+            <div class="evidence-graphic" aria-hidden="true"><span class="ev-report"><i></i><i></i><i></i><i></i></span><span class="ev-link"></span><span class="ev-search">⌕</span><span class="ev-label">来源 · 公式 · 期间</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow" id="workflow" aria-labelledby="workflowTitle"><div class="container">
+      <div class="workflow-top"><div><span class="eyebrow"><span class="eyebrow-line"></span> 工作方式</span><h2 id="workflowTitle">从第一份财务材料，<br>自然走向下一步。</h2></div><p>你不需要一开始学会所有模块。系统的价值，是帮助你在正确的时间看到下一项真正需要完成的工作。</p></div>
+      <div class="workflow-track">
+        <article><span class="work-number">01</span><div class="work-glyph glyph-1" aria-hidden="true"><span></span><span></span><span></span></div><h3>选择起点</h3><p>先用示范企业理解流程，或直接从自己的年度、季度、月度材料开始。</p></article>
+        <article><span class="work-number">02</span><div class="work-glyph glyph-2" aria-hidden="true"><span></span><span></span><span></span></div><h3>核验并理解</h3><p>确认数据口径和完整性，再查看变化、财务指标及证据。</p></article>
+        <article><span class="work-number">03</span><div class="work-glyph glyph-3" aria-hidden="true"><span></span><span></span><span></span></div><h3>沉淀结果</h3><p>保存分析过程，导出报告；有必要时返回原始材料重新审视。</p></article>
+      </div>
+    </div></section>
+
+    <section class="section scope" id="scope" aria-labelledby="scopeTitle"><div class="container scope-layout">
+      <div class="scope-copy"><span class="eyebrow"><span class="eyebrow-line"></span> 清晰的适用边界</span><h2 id="scopeTitle">可以大胆探索，<br><em>但不混淆事实。</em></h2><p>企财智策区分示范合成案例与用户自有财务项目。示范数据用于理解研究模型与交互流程，不代表对真实企业的自动评分、预测或投资建议。</p><a class="text-arrow" href="/workspace/journey">从示范案例开始 <span aria-hidden="true">↗</span></a></div>
+      <div class="scope-panel"><div class="scope-row"><span class="scope-icon">◎</span><div><strong>示范体验</strong><p>用于理解系统流程、研究分析与限定范围的情景比较。</p></div><span class="scope-tag">合成案例</span></div><div class="scope-divider"></div><div class="scope-row"><span class="scope-icon">▤</span><div><strong>我的财务项目</strong><p>基于导入材料完成核验、独立财务分析和报告导出。</p></div><span class="scope-tag">用户数据</span></div></div>
+    </div></section>
+    <section class="cinematic-scroll cinematic-lens" id="final-lens-journey" aria-labelledby="lensJourneyTitle">
+      <div class="cinematic-sticky">
+        <div class="cinematic-fallback lens-fallback" aria-hidden="true"><div class="fallback-aura"></div><div class="fallback-lens"></div><div class="fallback-ring"></div></div>
+        <div class="cinema-frame" data-cinema="lens" aria-hidden="true"></div>
+        <div class="cinematic-vignette" aria-hidden="true"></div>
+        <div class="lens-copy container"><span class="cinematic-kicker">从理解，到行动</span><h2 id="lensJourneyTitle">穿过数据。<br><em>抵达判断。</em></h2></div>
+        <div class="lens-handoff" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="closing" id="start" aria-labelledby="startTitle"><div class="container closing-inner">
+      <div class="closing-halo" aria-hidden="true"></div><span class="eyebrow">现在，开始一次真正有依据的分析</span><h2 id="startTitle">从这里，<br>看见更清晰的下一步。</h2><p class="closing-summary"><span>先体验示范企业，或导入自己的财务材料。</span><span>两条路径，同一套工作台；数据来源始终区分。</span></p>
+      <div class="start-grid"><a href="/workspace/journey" class="start-path"><span>第一次体验 · 推荐</span><strong>先体验示范企业</strong><small>了解数据、分析与报告的完整工作方式</small><b aria-hidden="true">↗</b></a><a href="/workspace/ingest" class="start-path"><span>已有财务材料</span><strong>用我的数据开始</strong><small>创建项目并导入年度、季度或月度财务三表</small><b aria-hidden="true">↗</b></a></div>
+    </div></section>
+  </main>
+  <footer class="footer"><div class="container footer-layout"><div class="footer-brand"><img src="./system-logo-square.png" alt="" width="28" height="28"><span>企财智策</span></div><span>让每一个判断，都有可以回看的依据。</span><a href="#top">返回顶部 ↑</a></div><p class="footer-note container">本地单用户体验版本 · 示例图形为结构示意，不代表真实企业分析结果</p></footer>
+</body>
+</html>

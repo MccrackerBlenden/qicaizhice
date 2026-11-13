@@ -1,0 +1,47 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*credentials*.json
+*service-account*.json
+
+# Local projects, backups, and session state
+.qz_session_*.json
+.runtime/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.sqlite3-*
+*.backup
+*.bak
+*.log
+*.pid
+*.tmp
+*.temp
+
+# Python / Node local artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+node_modules/
+dist/
+coverage/
+.cache/
+.DS_Store
+Thumbs.db
+
+# Personal data and locally exported reports
+local_data/
+user_data/
+uploads/
+exports/
+private/
+backups/
+*.csv~

@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07100e" />
+    <meta name="description" content="企财智策财务三表与折射视觉场景：从财务三表与数据核验，穿越期间、经营诊断、决策推演与证据链。" />
+    <link rel="icon" type="image/png" href="../system-logo-square.png" />
+    <title>企财智策 · 从财务数据到经营决策</title>
+    <script type="module" crossorigin src="../assets/cinema-scene.bundle.js"></script>
+    <link rel="stylesheet" crossorigin href="../assets/cinema-scene.css">
+  
+  <style id="qcz-scene-isolation">
+    html {scroll-behavior:auto!important;scrollbar-width:none!important}
+    html::-webkit-scrollbar,body::-webkit-scrollbar{display:none!important}
+    body, html {background:#071310!important;margin:0!important}
+    .nav,.skip,.chapter,.chapter-rail,.frame,.stage-graticule,.stage-noise,
+    .telemetry,.scroll-cue,.launch,.chapter-rail,.fact-strip,#webglWarning{display:none!important}
+    .journey{height:860vh!important;min-height:0!important}
+    .stage{height:100vh!important;min-height:0!important;background:#071310!important}
+    .wash{opacity:.35!important;pointer-events:none}
+    #world{width:100%!important;height:100%!important}
+    body{overflow-x:hidden!important}
+    @media (prefers-reduced-motion:reduce){.fallback{opacity:1!important}}
+  </style>
+  <script>
+    // Isolated Three.js scene: only accepts seek messages from its own parent origin.
+    (()=>{
+      const clamp=(v)=>Math.max(0,Math.min(1,Number(v)||0));
+      const sceneType=new URLSearchParams(location.search).get('scene')==='lens'?'lens':'statements';
+      const range=sceneType==='lens'?[.835,1]:[.012,.289];
+      let lastValue=0,ready=false;
+      function gotoFrame(normalized){
+        lastValue=clamp(normalized);
+        const origin=document.querySelector('#origin');
+        if(!origin)return;
+        const y=(range[0]+(range[1]-range[0])*lastValue)*Math.max(1,origin.offsetHeight-innerHeight);
+        scrollTo(0,y);
+        // The existing ScrollTrigger listens for scroll position and keeps original easing.
+      }
+      addEventListener('message',event=>{
+        if(event.origin!==location.origin || event.source!==parent || !event.data || event.data.type!=='qcz-cinema-seek')return;
+        if(event.data.scene!==sceneType)return;
+        gotoFrame(event.data.progress);
+      });
+      addEventListener('load',()=>{
+        gotoFrame(lastValue);
+        setTimeout(()=>{
+          ready=true;
+          parent.postMessage({type:'qcz-cinema-ready',scene:sceneType,webgl:!!document.querySelector('.stage.has-webgl')},location.origin);
+        },200);
+      });
+    })();
+  </script>
+</head>
+  <body>
+    <a class="skip" href="#launch">跳过沉浸场景，直接选择入口</a>
+    <header class="nav" aria-label="主导航">
+      <a class="brand" href="#origin" aria-label="返回企财智策首页起点"><span class="brand-mark"><img src="../system-logo.png" alt="" width="40" height="40" /></span><span><b>企财智策</b></span></a>
+      <div class="nav-status"><i></i><span id="navChapter">ORIGIN / 01</span></div>
+      <a class="nav-link" href="#launch" aria-label="进入工作台"><span class="nav-link-label">进入工作台</span><span aria-hidden="true">↗</span></a>
+    </header>
+
+    <main>
+      <section id="origin" class="journey" aria-labelledby="hero-title">
+        <div class="stage" id="stage">
+          <canvas id="world" aria-hidden="true"></canvas>
+          <div class="fallback" aria-hidden="true"><div class="fallback-grid"></div><div class="fallback-orbit"></div>
+            <svg class="fallback-architecture" viewBox="0 0 680 660" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="folioFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#92c8ae" stop-opacity=".20"/><stop offset="1" stop-color="#20382f" stop-opacity=".02"/></linearGradient>
+                <linearGradient id="folioStroke" x1="0" x2="1"><stop stop-color="#bbd8bb" stop-opacity=".1"/><stop offset=".7" stop-color="#d8dfaa" stop-opacity=".7"/><stop offset="1" stop-color="#bbd8bb" stop-opacity=".12"/></linearGradient>
+              </defs>
+              <g class="fa-lines"><path d="M15 540 L262 488 L654 582 M20 573 L277 516 L660 609 M15 613 L291 548 L650 637"/><path d="M65 340 L280 450 L620 424 M90 290 L292 423 L643 392"/><path d="M130 648 L345 165 M270 648 L397 150 M420 648 L445 130 M590 648 L500 114"/></g>
+              <g class="fa-sheet fa-sheet--back"><path d="M332 180 L564 129 L564 478 L332 535 Z"/><path d="M356 226 L542 185 M356 248 L527 212 M356 270 L526 238 M356 305 L526 273 M356 326 L519 302 M356 350 L533 329 M356 390 L533 370"/><text x="356" y="215">CF / CASH FLOW</text></g>
+              <g class="fa-sheet fa-sheet--middle"><path d="M258 126 L496 67 L496 424 L258 490 Z"/><path d="M284 178 L464 130 M284 218 L454 180 M284 245 L466 209 M284 272 L449 244 M284 309 L465 276 M284 341 L462 310 M284 379 L456 348"/><text x="284" y="164">IS / INCOME</text></g>
+              <g class="fa-sheet fa-sheet--front"><path d="M190 155 L437 91 L437 464 L190 534 Z"/><path d="M216 215 L408 160 M216 249 L405 195 M216 279 L405 225 M216 318 L396 265 M216 350 L405 300 M216 393 L410 342 M216 426 L411 379"/><text x="216" y="203">BS / BALANCE SHEET</text></g>
+              <path class="fa-signal" d="M93 478 C193 382 277 358 376 333 S546 255 646 220"/>
+              <g class="fa-target"><circle cx="376" cy="333" r="7"/><circle cx="376" cy="333" r="22"/></g>
+            </svg>
+          </div>
+          <div class="wash" aria-hidden="true"></div>
+          <div class="stage-noise" aria-hidden="true"></div>
+          <div class="stage-graticule" aria-hidden="true"><span>FINANCIAL INTELLIGENCE / ATLAS</span><span>001 — 007</span></div>
+          <div class="frame" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <nav class="chapter-rail" aria-label="首页章节定位">
+            <button type="button" data-jump="0" class="active" aria-label="进入首屏"><span>00</span><i></i><em>序章</em></button>
+            <button type="button" data-jump="1" aria-label="跳转数据接入"><span>01</span><i></i><em>数据</em></button>
+            <button type="button" data-jump="2" aria-label="跳转期间分析"><span>02</span><i></i><em>期间</em></button>
+            <button type="button" data-jump="3" aria-label="跳转经营诊断"><span>03</span><i></i><em>诊断</em></button>
+            <button type="button" data-jump="4" aria-label="跳转决策推演"><span>04</span><i></i><em>决策</em></button>
+            <button type="button" data-jump="5" aria-label="跳转证据报告"><span>05</span><i></i><em>证据</em></button>
+            <button type="button" data-jump="6" aria-label="跳转最终入口"><span>06</span><i></i><em>入口</em></button>
+          </nav>
+
+          <article class="chapter chapter--hero" data-chapter="0" data-start="0" data-end="0.135">
+            <div class="chapter-index"><span>00</span><i></i> ORIGIN</div>
+            <p class="eyebrow">QICAI  /  FINANCIAL INTELLIGENCE  /  2026</p>
+            <h1 id="hero-title">透过数字，<br>看见<em>经营全貌。</em></h1>
+            <p class="lead">从资产、利润与现金流的交汇处出发，穿越数据核验、期间变化和经营推演。让每一次判断，都有迹可循。</p>
+            <a href="#data-entry" data-jump="1" class="inline-cta"><span>开始探索</span><b>↘</b></a>
+            <div class="hero-dossier" aria-label="产品能力边界"><span>01 — 数据可信</span><span>02 — 分析可解释</span><span>03 — 决策有边界</span></div>
+          </article>
+
+          <article class="chapter chapter--data" id="data-entry" data-chapter="1" data-start="0.105" data-end="0.305">
+            <div class="chapter-index"><span>01</span><i></i> DATA / TRUST</div>
+            <div class="chapter-grid">
+              <div class="chapter-copy"><p class="eyebrow">财务数据进入</p><h2>让三张报表，<br>带着来路汇合。</h2><p>导入年度或期间三表，完成字段映射、金额单位统一与准入预检。来源文件、原始列、SHA-256 指纹、期间与版本记录沿分析链保留。</p></div>
+              <div class="source-atlas" aria-label="三张财务报表经过质量核验汇合为一个可追溯的数据快照">
+                <div class="source-atlas__caption"><span>INGESTION PROTOCOL</span><span>03 SOURCES / 01 TRACEABLE SNAPSHOT</span></div>
+                <svg class="source-atlas__routes" viewBox="0 0 540 360" preserveAspectRatio="none" aria-hidden="true"><path class="route-base" d="M34 66 C235 66 242 171 373 171 L508 171"/><path class="route-base" d="M34 151 L373 171"/><path class="route-base" d="M34 237 C235 237 242 171 373 171"/><path class="route-flow" d="M34 66 C235 66 242 171 373 171 L508 171"/><path class="route-flow route-flow--late" d="M34 237 C235 237 242 171 373 171"/></svg>
+                <div class="source-atlas__entries">
+                  <div class="source-entry"><span>BS / 01</span><b>资产负债表</b><small>期末资产 · 负债 · 权益</small></div>
+                  <div class="source-entry"><span>IS / 02</span><b>利润表</b><small>收入 · 成本 · 净利润</small></div>
+                  <div class="source-entry"><span>CF / 03</span><b>现金流量表</b><small>经营 · 投资 · 筹资</small></div>
+                </div>
+                <div class="source-atlas__output"><small>DATA QUALITY GATE</small><b>通过核验<br>形成快照</b><span>字段映射 / 会计勾稽 / 来源登记</span></div>
+                <div class="source-atlas__footer"><span>FIELD MAPPING</span><span>UNIT NORMALIZATION</span><span>VERSION TRACE</span></div>
+              </div>
+            </div>
+            <div class="fact-strip"><span>CSV / XLSX</span><span>中文 / 英文字段映射</span><span>元 / 万元 / 亿元</span><span>更正保留历史版本</span></div>
+          </article>
+
+          <article class="chapter chapter--period" data-chapter="2" data-start="0.275" data-end="0.475">
+            <div class="chapter-index"><span>02</span><i></i> PERIOD / CONTINUITY</div>
+            <div class="period-layout">
+              <div class="chapter-copy"><p class="eyebrow">期间与财务分析</p><h2>时间，不该被<br>一张年报折叠。</h2><p>在年度趋势之外，按自然月或自然季度观察收入、净利润、经营现金流与期末资产。YTD 采用相邻累计差分；缺期不补零，余额不跨期相加。</p><div class="period-switch" role="group" aria-label="期间能力示意"><button type="button" data-period="year">年度</button><button type="button" data-period="quarter">季度</button><button type="button" class="active" data-period="month">月度</button></div></div>
+              <div class="time-instrument" data-period-view="month" aria-live="polite">
+                <div class="time-caption"><span id="periodMode">MONTH / 12 SLOTS</span><small>STRUCTURAL DEMO / NOT FINANCIAL RESULTS</small></div>
+                <svg class="period-chart" viewBox="0 0 640 330" role="img" aria-label="期间连续结构示意曲线，不含真实企业数值">
+                  <defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#aecac1" stop-opacity=".12"/><stop offset="1" stop-color="#aecac1" stop-opacity="0"/></linearGradient></defs>
+                  <g class="chart-grid"><path d="M32 32 H612 M32 98 H612 M32 164 H612 M32 230 H612 M32 296 H612"/><path d="M32 32 V296 M177 32 V296 M322 32 V296 M467 32 V296 M612 32 V296"/></g>
+                  <path id="chartArea" fill="url(#chartFill)" stroke="none" d="" />
+                  <path id="chartLineAlt" class="chart-alt" d="" />
+                  <path id="chartLine" class="chart-main" d="" />
+                  <circle id="chartMarker" cx="32" cy="210" r="4" />
+                  <g id="chartTicks" class="chart-ticks"></g>
+                </svg>
+                <div class="chart-index"><span>PERIOD INDEX</span><b>观察变化，不替数据下结论</b></div>
+                <div class="time-legend"><span><i></i>期间变化结构</span><span><i></i>对照关系</span><small>示意形态 · 非真实数值</small></div>
+              </div>
+            </div>
+            <p class="boundary-note">支持自然年、自然季度与自然月；不支持非自然财年、4-4-5 日历或自动预测。</p>
+          </article>
+
+          <article class="chapter chapter--diagnosis" data-chapter="3" data-start="0.445" data-end="0.645">
+            <div class="chapter-index"><span>03</span><i></i> DIAGNOSIS / RELATIONS</div>
+            <div class="diagnosis-layout">
+              <div class="relation-atlas" aria-label="五个经营观察维度之间的关系示意">
+                  <svg viewBox="0 0 520 500" aria-hidden="true"><defs><radialGradient id="relationGlow"><stop offset="0" stop-color="#a8c4ac" stop-opacity=".15"/><stop offset="1" stop-color="#a8c4ac" stop-opacity="0"/></radialGradient></defs>
+                  <circle cx="260" cy="250" r="235" fill="url(#relationGlow)"/><g class="relation-guides"><circle cx="260" cy="250" r="168"/><circle cx="260" cy="250" r="118"/><path d="M260 32 V468 M42 250 H478"/></g>
+                  <g class="relation-lines"><path d="M260 101 L420 186 L357 388 L164 388 L100 186 Z"/><path d="M260 101 L357 388 M420 186 L164 388 M100 186 L357 388 M260 101 L164 388 M100 186 L420 186"/></g>
+                  <g class="relation-points"><circle data-rel="盈利" cx="260" cy="101" r="5"/><circle data-rel="偿债" cx="420" cy="186" r="5"/><circle data-rel="营运" cx="357" cy="388" r="5"/><circle data-rel="成长" cx="164" cy="388" r="5"/><circle data-rel="现金流" cx="100" cy="186" r="5"/></g>
+                  </svg>
+                  <div class="relation-center"><span>FIVE DIMENSIONS</span><strong id="relationCenter">盈利质量</strong><small>来源 · 公式 · 可比期间</small></div>
+                  <span class="rel-label rel-label--a">盈利</span><span class="rel-label rel-label--b">偿债</span><span class="rel-label rel-label--c">营运</span><span class="rel-label rel-label--d">成长</span><span class="rel-label rel-label--e">现金流</span>
+                </div>
+              <div class="diagnosis-copy"><p class="eyebrow">经营诊断</p><h2>不看孤立分数，<br>看经营关系。</h2><p id="diagnosisDesc">从利润水平与现金实现之间的关系开始，结合原始字段、计算公式和比较期间理解盈利质量。</p><div class="dimension-list" aria-label="财务观察维度"><button class="active" data-copy="从利润水平与现金实现之间的关系开始，结合原始字段、计算公式和比较期间理解盈利质量。"><span>01</span>盈利</button><button data-copy="把资产负债结构、流动性字段与现金保障放在一起观察；字段不足时明确显示不可计算。"><span>02</span>偿债</button><button data-copy="通过周转相关字段与跨期变化观察运营效率，不把缺失期初值或无效分母替换为零。"><span>03</span>营运</button><button data-copy="在相邻可比年度或完整期间之间计算变化；缺少比较期时不制造同比。"><span>04</span>成长</button><button data-copy="对照利润与经营现金流，并检查现金组成、期初期末滚动和来源记录的完整程度。"><span>05</span>现金流</button></div></div>
+            </div>
+            <div class="fact-strip"><span>可解释财务比率</span><span>跨年 / 跨期趋势</span><span>利润变化桥</span><span>异常阻断与缺失说明</span></div>
+          </article>
+
+          <article class="chapter chapter--decision" data-chapter="4" data-start="0.615" data-end="0.795">
+            <div class="chapter-index"><span>04</span><i></i> DECISION / CONSTRAINTS</div>
+            <div class="decision-layout">
+              <div class="chapter-copy"><p class="eyebrow">决策与经营推演</p><h2>诊断之后，<br>比较可行路径。</h2><p>在已验证的安全合成案例范围内，设置情景、目标与财务护栏，重算候选并比较成本、改善与现金余量；保存方案后继续记录行动与差异。</p><p class="scope-warning"><i></i> 优化结果仅适用于已验证的合成案例，不自动用于用户上传企业。</p></div>
+              <div class="decision-atlas" aria-label="从情景设定、约束到方案比较和跟踪的决策路径示意">
+                <div class="decision-atlas__top"><span>DECISION PATH / CONTROLLED STUDY</span><span>FOUR CONNECTED STAGES</span></div>
+                <svg viewBox="0 0 640 270" preserveAspectRatio="none" aria-hidden="true"><path class="decision-grid" d="M24 35 H618 M24 135 H618 M24 235 H618"/><path class="decision-branch" d="M50 138 C172 138 186 70 288 70 S444 136 598 136"/><path class="decision-branch muted" d="M50 138 C172 138 198 201 288 201 S448 136 598 136"/><path class="decision-branch decision-branch--main" d="M50 138 C185 138 193 138 288 138 S447 136 598 136"/><g class="decision-dots"><circle cx="50" cy="138" r="6"/><circle cx="288" cy="138" r="5"/><circle cx="452" cy="136" r="5"/><circle cx="598" cy="136" r="7"/></g></svg>
+                <div class="decision-sequence"><div><span>01 / INPUT</span><b>情景试算</b><small>假设范围</small></div><div><span>02 / CHECK</span><b>约束护栏</b><small>成本 / 现金 / 负债率</small></div><div><span>03 / SELECT</span><b>候选比较</b><small>取舍与证据</small></div><div><span>04 / FOLLOW</span><b>行动跟踪</b><small>观察与差异</small></div></div>
+                <p class="decision-footnote">仅在已验证的合成案例边界内演示优化，真实用户数据需另行核验适用性。</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="chapter chapter--evidence" data-chapter="5" data-start="0.765" data-end="0.925">
+            <div class="chapter-index"><span>05</span><i></i> EVIDENCE / REPORT</div>
+            <div class="evidence-layout">
+              <div class="evidence-atlas" aria-label="分析结论的证据链示意">
+                  <div class="evidence-atlas__overline"><span>PROVENANCE / EVIDENCE CHAIN</span><span>01—04</span></div>
+                  <div class="evidence-atlas__spine" aria-hidden="true"></div>
+                  <div class="evidence-record"><span>01</span><div><b>来源文件</b><small>文件指纹 / 版本 / 期间</small></div><strong>REGISTER</strong></div>
+                  <div class="evidence-record"><span>02</span><div><b>字段映射</b><small>原始列 / 单位 / 转换依据</small></div><strong>TRACE</strong></div>
+                  <div class="evidence-record"><span>03</span><div><b>公式核验</b><small>勾稽 / 计算逻辑 / 披露摘录</small></div><strong>VERIFY*</strong></div>
+                  <div class="evidence-record"><span>04</span><div><b>报告快照</b><small>报告与项目历史绑定</small></div><strong>VERSION</strong></div>
+                  <p class="evidence-note">* 数值核对不等于审计认证或来源真实性证明。</p>
+                </div>
+              <div class="chapter-copy"><p class="eyebrow">证据与报告</p><h2>每个结论，<br>都能回到源头。</h2><p>下钻到公式、源字段、文件指纹与披露摘录；冲突时限制相应结论。报告绑定财务快照，支持本地 PDF、XLSX、HTML、CSV 与 JSON 输出，并保留适用边界。</p><div class="report-formats"><span>PDF</span><span>XLSX</span><span>HTML</span><span>CSV</span><span>JSON</span></div></div>
+            </div>
+          </article>
+
+          <article class="chapter chapter--lens" data-chapter="6" data-start="0.895" data-end="1"><span class="lens-cross lens-cross--a" aria-hidden="true"></span><span class="lens-cross lens-cross--b" aria-hidden="true"></span><p class="eyebrow">FROM INSIGHT TO ACTION / 06</p><div class="lens-aperture"><div class="lens-aperture__rings" aria-hidden="true"><i></i><i></i><i></i></div><h2>让判断，<br>成为<em>下一步。</em></h2></div><small>继续滚动 · 进入真实的产品入口</small></article>
+
+          <aside class="telemetry" aria-hidden="true"><span id="phaseText">ORIGIN / POSITIONING</span><b><i id="progressBar"></i></b><small><span id="progressText">000</span> / 1000</small></aside>
+          <div class="scroll-cue" aria-hidden="true"><span>SCROLL / REVERSE FREELY</span><i></i></div>
+        </div>
+      </section>
+
+      <section class="launch" id="launch" aria-labelledby="launch-title">
+        <div class="launch-grid" aria-hidden="true"></div>
+        <div class="launch-top"><span>06 / ENTER THE WORKSPACE</span><span>ANALYSIS STARTS WITH A CLEAR DATA SOURCE</span></div>
+        <div class="launch-copy"><p>从看见，到动手</p><h2 id="launch-title">从这里，<br><em>开始你的判断。</em></h2><p class="launch-lead">先用安全合成案例理解完整能力，或直接接入自己的年度、月度或季度财务材料。两条路径始终区分，用户数据不会进入合成评分与优化器。</p></div>
+        <div class="launch-paths"><a href="/workspace/journey" data-workspace-path="/workspace/journey"><span><small>PATH / 01 · RECOMMENDED</small><b>先体验示范企业</b><em>了解诊断、研究模型、情景与经营方案</em></span><strong>↗</strong></a><a href="/workspace/ingest" data-workspace-path="/workspace/ingest"><span><small>PATH / 02 · YOUR DATA</small><b>用我的财务数据开始</b><em>年度、月度或季度项目，先核对再分析</em></span><strong>↗</strong></a></div>
+        <div class="launch-foot"><span>企财智策 / QICAI FINANCIAL INTELLIGENCE</span><span>独立视觉原型 · 不读取企业数据 · 不修改正式业务系统</span><a href="#origin">返回起点 ↑</a></div>
+      </section>
+    </main>
+
+    <div class="webgl-warning" id="webglWarning" hidden>当前环境未启用 WebGL，已切换为静态空间降级。</div>
+  </body>
+</html>

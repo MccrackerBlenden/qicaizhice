@@ -1,0 +1,163 @@
+/* isolated, reversible cinematic chapters. No U1 components are restyled. */
+.cinematic-scroll{--scene-progress:0;--handoff:0;position:relative;height:226vh;min-height:1180px;background:#071511;color:#e8f0e7;isolation:isolate}
+.cinematic-sticky{position:sticky;top:0;height:100vh;height:100svh;min-height:440px;overflow:hidden;background:radial-gradient(ellipse at 58% 49%,#1b332b 0%,#0a1d19 42%,#071511 87%);isolation:isolate}
+.cinematic-sticky:before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,18,15,.90) 0%,rgba(5,18,15,.65) 30%,rgba(5,18,15,.08) 62%,rgba(5,18,15,.03) 100%)}
+.cinema-frame{position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .85s ease;pointer-events:none}
+.cinema-frame.loaded{opacity:1}
+.cinema-frame iframe{width:100%;height:100%;border:0;display:block;pointer-events:none;background:#071310}
+.cinematic-vignette{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(to bottom,rgba(5,15,15,.32),transparent 24%,transparent 69%,rgba(5,16,16,.76)),radial-gradient(ellipse at 50% 50%,transparent 35%,rgba(5,15,15,.35) 100%)}
+.cinematic-copy{position:relative;z-index:3;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;height:100%;padding-top:32px;padding-bottom:70px;pointer-events:none;transform:translateY(calc(var(--scene-progress)*-32px));opacity:var(--exit-opacity,1)}
+.cinematic-kicker{font-size:13px;font-weight:600;letter-spacing:.08em;color:#b3cfbf;display:block}
+.cinematic-copy h2,.lens-copy h2{font-size:clamp(42px,5.1vw,74px);font-weight:570;line-height:1.2;letter-spacing:-.05em;margin:26px 0 21px;color:#f1f5eb}
+.cinematic-copy h2 em,.lens-copy h2 em{font-style:normal;color:#a8d4bc}
+.cinematic-copy>p{font-size:16px;line-height:1.9;color:#bfd0c4;max-width:365px;margin:0}
+.cinematic-current{display:inline-flex;align-items:center;gap:13px;border-top:1px solid rgba(195,232,207,.3);padding-top:18px;margin-top:50px;min-width:270px}
+.cinema-accent-dot{width:8px;height:8px;border-radius:100%;background:#d6d99a;box-shadow:0 0 12px rgba(214,217,154,.5)}
+.cinematic-current strong{font-weight:530;font-size:19px;color:#e1ebd9;letter-spacing:.05em}
+.cinematic-progress{position:absolute;z-index:4;left:0;bottom:0;width:100%;height:2px;background:rgba(193,221,198,.14)}
+.cinematic-progress span{height:100%;width:calc(var(--scene-progress)*100%);display:block;background:#d3db9a;box-shadow:0 0 12px #d3db9a}
+.cinematic-fallback{position:absolute;inset:0;pointer-events:none;opacity:1;transition:opacity .8s ease;overflow:hidden}
+.cinematic-sticky:has(.cinema-frame.loaded) .cinematic-fallback{opacity:0}
+.three-fallback{perspective:950px;transform-style:preserve-3d}
+.fallback-plane{position:absolute;top:calc(36% + (var(--plane-index) - 1)*7%);left:calc(52% + (var(--plane-index) - 1)*10%);width:clamp(180px,26vw,340px);height:clamp(250px,38vw,465px);padding:27px;background:linear-gradient(140deg,rgba(32,70,57,.86),rgba(9,36,30,.67));border:1px solid rgba(178,228,195,.48);box-shadow:0 25px 150px rgba(50,115,89,.2),inset 0 0 70px rgba(104,155,111,.08);border-radius:6px;transform:translate(-50%,-50%) rotateY(-17deg) translateZ(calc((2 - var(--plane-index))*95px)) translateY(calc(var(--scene-progress)*-20px));opacity:calc(.92 - (var(--plane-index)*.12))}
+.fallback-plane span{font-size:clamp(15px,1.5vw,23px);font-weight:550;color:#ecf5e9;display:block;margin-bottom:35px}
+.fallback-plane i{display:block;height:1px;margin:23px 0;background:linear-gradient(to right,#9ecbb5 16%,rgba(178,210,192,.17) 16% 68%,transparent 68%)}
+.plane-one{--plane-index:0}.plane-two{--plane-index:1}.plane-three{--plane-index:2}
+.cinematic-lens{height:185vh;min-height:900px;background:#061713}
+.cinematic-lens .cinematic-sticky{background:radial-gradient(circle at 52% 50%,#1f4638,#081c17 46%,#061713 88%)}
+.cinematic-lens .cinematic-sticky:before{background:linear-gradient(90deg,rgba(4,18,15,.7),transparent 65%)}
+.lens-copy{height:100%;z-index:3;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;pointer-events:none;opacity:var(--lens-text-alpha,1);transform:translateY(calc(var(--scene-progress)*-40px))}
+.lens-copy h2{margin-top:18px}
+/* The original lens stays present while a continuous pale veil rises;
+   no intermediate dark blank screen and no color jump at the CTA boundary. */
+.lens-handoff{position:absolute;z-index:5;inset:-1px;background:#d8e7d9;opacity:var(--handoff);pointer-events:none;will-change:opacity}
+.lens-fallback .fallback-aura{position:absolute;width:65vmin;height:65vmin;left:50%;top:50%;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(215,238,206,.35) 2%,rgba(99,177,146,.12) 35%,transparent 66%);filter:blur(16px)}
+.lens-fallback .fallback-lens{position:absolute;width:39vmin;height:39vmin;left:50%;top:50%;transform:translate(-50%,-50%) scale(calc(.73 + var(--scene-progress)*.35));border-radius:50%;background:radial-gradient(ellipse at 33% 25%,rgba(240,252,226,.48),rgba(111,194,162,.11) 38%,rgba(8,40,34,.7) 67%,rgba(211,249,209,.33));box-shadow:inset 8px 8px 32px rgba(217,251,227,.22),0 0 40px rgba(157,222,174,.24);border:1px solid rgba(211,242,223,.7)}
+.lens-fallback .fallback-ring{position:absolute;width:49vmin;height:49vmin;left:50%;top:50%;transform:translate(-50%,-50%) scale(calc(.73 + var(--scene-progress)*.35));border-radius:50%;border:1px solid rgba(200,242,216,.56);box-shadow:0 0 60px rgba(161,224,184,.14)}
+@media (max-width:900px){.cinematic-scroll{height:208vh;min-height:950px}.cinematic-lens{height:178vh;min-height:820px}.cinematic-copy h2,.lens-copy h2{font-size:clamp(38px,7vw,58px)}.cinematic-copy{justify-content:flex-start;padding-top:150px}.cinematic-sticky:before{background:linear-gradient(to bottom,rgba(5,18,15,.74),rgba(5,18,15,.05) 58%,rgba(5,18,15,.4))}.fallback-plane{top:62%;left:calc(44% + (var(--plane-index) - 1)*15%)}.lens-copy{justify-content:flex-start;padding-top:150px}.cinematic-copy>p{max-width:520px}}
+@media (max-width:680px){.cinematic-scroll{height:186vh;min-height:780px}.cinematic-lens{height:164vh;min-height:700px}.cinematic-copy{padding-top:105px;padding-bottom:40px}.cinematic-copy h2,.lens-copy h2{font-size:clamp(35px,9vw,46px);margin:17px 0 12px}.cinematic-copy>p{font-size:14px;max-width:310px}.cinematic-kicker{font-size:12px}.cinematic-current{min-width:195px;margin-top:19px;padding-top:12px}.cinematic-current strong{font-size:16px}.fallback-plane{width:42vw;height:54vw;padding:14px;top:69%;left:calc(47% + (var(--plane-index) - 1)*15%)}.fallback-plane span{font-size:12px;margin-bottom:12px}.fallback-plane i{margin:15px 0}.lens-copy{padding-top:115px}.cinematic-sticky{min-height:0}}
+@media(prefers-reduced-motion:reduce){.cinematic-scroll{height:auto;min-height:540px}.cinematic-lens{min-height:510px}.cinematic-sticky{position:relative;min-height:540px}.cinematic-lens .cinematic-sticky{min-height:510px}.cinematic-copy,.lens-copy{opacity:1!important;transform:none!important}.cinematic-fallback{opacity:1!important}.cinema-frame{display:none!important}.lens-handoff{display:none}}
+
+/* single coordinated departure for statement models, labels and copy. */
+.cinematic-three .cinematic-copy,
+.cinematic-three .cinematic-progress{opacity:var(--exit-opacity,1)}
+.cinematic-three .cinema-frame.loaded{opacity:var(--exit-opacity,1)}
+.cinematic-three .cinematic-fallback{opacity:var(--exit-opacity,1)}
+.cinematic-three .cinematic-sticky:has(.cinema-frame.loaded) .cinematic-fallback{opacity:0}
+.cinematic-three .cinematic-sticky::after{
+  content:"";position:absolute;inset:-1px;z-index:6;pointer-events:none;
+  background:#f5f2eb;opacity:var(--exit-wash,0);will-change:opacity;
+}
+/* The lens and its caption leave together as the light handoff appears. */
+.cinematic-lens .lens-copy{opacity:var(--lens-text-alpha,1)}
+.cinematic-lens .cinema-frame.loaded{opacity:calc(1 - var(--handoff,0) * .7)}
+/* Typesetting: keep the last word on a balanced line in the main copy. */
+.cinematic-copy h2,.lens-copy h2,.cinematic-copy>p,
+.closing h2,.closing-inner>p,.section h2,
+.hero h1,.hero-intro,.section-heading>p,.workflow-top>p,
+.feature p,.scope-copy>p,.start-path small{
+  text-wrap:balance;
+}
+.cinematic-copy>p{max-width:400px}
+.closing-inner>p{max-width:560px;margin-inline:auto}
+.cinematic-copy h2,.lens-copy h2{max-width:10.8em}
+@media(max-width:680px){
+ .cinematic-copy h2,.lens-copy h2{max-width:100%}
+ .cinematic-copy>p{max-width:min(335px,95%)}
+ .closing-inner>p{max-width:min(335px,100%)}
+}
+@media(prefers-reduced-motion:reduce){
+ .cinematic-three .cinematic-sticky::after{display:none}
+}
+
+/* CTA rises through the final light transition instead of appearing after a
+   long empty screen. The transparent leading edge avoids a hard seam. */
+.cinematic-lens + .closing{
+  margin-top:-35vh;z-index:7;
+  background:linear-gradient(to bottom,
+    rgba(216,231,217,0) 0%, rgba(216,231,217,.46) 14%,
+    #d8e7d9 32%,#d8e7d9 100%);
+}
+.cinematic-lens + .closing::before{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 34%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 34%);
+}
+@media(max-width:680px){.cinematic-lens + .closing{margin-top:-30svh}}
+@media(prefers-reduced-motion:reduce){.cinematic-lens + .closing{margin-top:0;background:#d8e7d9}}
+
+/* Two deliberate, readable thought units; no orphaned 1–2 character ending. */
+.closing-summary span{display:block;text-wrap:balance}
+.closing-summary span + span{margin-top:3px}
+
+
+/* Two scenes remain; their neighboring real sections now overlap them.
+   The arrival content is NOT a duplicate fake card, and no scroll is hijacked. */
+@media (min-width: 681px) and (prefers-reduced-motion: no-preference){
+  #three-statement-journey + #capabilities{margin-top:-52svh}
+  #final-lens-journey + #start{margin-top:-56svh}
+}
+@media (max-width:680px) and (prefers-reduced-motion: no-preference){
+  #three-statement-journey + #capabilities{margin-top:-35svh}
+  #final-lens-journey + #start{margin-top:-37svh}
+}
+/* Feathered entrance: the real next section slides into the outgoing scene
+   instead of popping on when the sticky scene unpins. */
+#three-statement-journey + #capabilities,
+#final-lens-journey + #start{
+  position:relative;z-index:8;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0px,rgba(0,0,0,.25) 65px,#000 225px);
+  mask-image:linear-gradient(to bottom,transparent 0px,rgba(0,0,0,.25) 65px,#000 225px);
+  background-clip:border-box;
+}
+/* For three sheets, a gentle pale haze blooms; a full-page wash only completes
+   late when the genuine pale capabilities section is already in the viewport. */
+.cinematic-three .cinematic-sticky::after{
+  z-index:6;background:radial-gradient(ellipse 85% 115% at 70% 70%, #f5f2eb 0%,rgba(245,242,235,.92) 35%,rgba(245,242,235,.55) 72%,#f5f2eb 100%);
+  opacity:var(--exit-wash,0);
+}
+.cinematic-three .cinematic-copy,
+.cinematic-three .cinematic-progress,
+.cinematic-three .cinema-frame.loaded,
+.cinematic-three .cinematic-fallback{opacity:var(--exit-opacity,1)}
+.cinematic-three .cinematic-sticky:has(.cinema-frame.loaded) .cinematic-fallback{opacity:0}
+/* Earlier layouts included an 850ms CSS transition on iframe opacity. That caused a SECOND
+   delay on top of Three.js camera easing. Removing it once loaded is vital. */
+.cinema-frame.loaded{transition:none}
+.cinematic-three .cinematic-fallback{transition:none}
+/* Lens: refracted light first spreads from its center, then a pale veil gently
+   fills the peripheral frame, meeting the *actual* CTA that moves upward. */
+.cinematic-lens .lens-handoff{
+  background:radial-gradient(ellipse 82% 105% at 54% 51%, #d8e7d9 3%,rgba(216,231,217,.96) 28%,rgba(216,231,217,.54) 56%,rgba(216,231,217,0) 100%);
+  opacity:var(--handoff,0);
+}
+.cinematic-lens .cinematic-sticky::after{
+  content:"";position:absolute;inset:-1px;z-index:6;
+  pointer-events:none;background:#d8e7d9;opacity:var(--handoff-final,0);
+}
+.cinematic-lens .cinema-frame.loaded{opacity:var(--lens-texture-alpha,1)}
+.cinematic-lens .lens-copy{opacity:var(--lens-text-alpha,1)}
+/* The CTA gradient was already matched to the lens, but at a different
+   overlap length. Keep its actual paper color and align the entrance feather. */
+#final-lens-journey + #start{
+  background:linear-gradient(to bottom,rgba(216,231,217,0) 0%,#d8e7d9 225px,#d8e7d9 100%);
+}
+/* The staged copy gets perceptually quiet only as its visual scene dissolves. */
+.cinematic-copy{transform:translateY(calc(var(--scene-progress)*-23px))}
+.lens-copy{transform:translateY(calc(var(--scene-progress)*-25px))}
+/* Background approaches first; readable actual content follows afterward,
+   so there are never two full-strength giant headlines in the same frame. */
+#three-statement-journey + #capabilities > .container,
+#final-lens-journey + #start > .closing-inner{
+  opacity:var(--incoming-opacity,1);
+  transform:translateY(calc((1 - var(--incoming-opacity,1))*24px));
+  will-change:opacity,transform;
+}
+@media (prefers-reduced-motion:reduce){
+ #three-statement-journey + #capabilities > .container,
+ #final-lens-journey + #start > .closing-inner{opacity:1;transform:none}
+ #three-statement-journey + #capabilities,#final-lens-journey + #start{
+  margin-top:0;-webkit-mask-image:none;mask-image:none;
+ }
+ .cinematic-lens .cinematic-sticky::after{display:none}
+ .cinematic-three .cinematic-sticky::after{display:none}
+}

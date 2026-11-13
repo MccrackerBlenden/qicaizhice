@@ -1,0 +1,137 @@
+{
+  "config_id": "QZ-SYNTHETIC-GRID-2022",
+  "frozen_before_search": true,
+  "label": "假设条件下的有限网格财务行动方案",
+  "target_companies": [
+    "VPM-071",
+    "VPM-101",
+    "VPM-203"
+  ],
+  "target_year": 2022,
+  "prior_year": 2021,
+  "decision_variables": {
+    "receivables_collection_rate": {
+      "unit": "share_of_2022_closing_receivables",
+      "values": [
+        0.0,
+        0.1,
+        0.2,
+        0.3,
+        0.4,
+        0.5
+      ],
+      "nominal_step": 0.1,
+      "m1f1_hard_maximum": 0.6
+    },
+    "inventory_release_rate": {
+      "unit": "share_of_2022_closing_inventory",
+      "values": [
+        0.0,
+        0.0875,
+        0.175,
+        0.2625,
+        0.35
+      ],
+      "nominal_step": 0.0875,
+      "m1f1_hard_maximum": 0.4
+    },
+    "selling_expense_reduction_rate": {
+      "unit": "share_of_2022_selling_expense",
+      "values": [
+        0.0,
+        0.1125,
+        0.225
+      ],
+      "nominal_step": 0.1125,
+      "m1f1_hard_maximum": 0.25
+    },
+    "admin_expense_reduction_rate": {
+      "unit": "share_of_2022_admin_expense",
+      "values": [
+        0.0,
+        0.1125,
+        0.225
+      ],
+      "nominal_step": 0.1125,
+      "m1f1_hard_maximum": 0.25
+    },
+    "short_term_debt_to_revenue": {
+      "unit": "share_of_2022_revenue",
+      "values": [
+        0.0,
+        0.125,
+        0.25
+      ],
+      "nominal_step": 0.125
+    },
+    "long_term_debt_to_revenue": {
+      "unit": "share_of_2022_revenue",
+      "values": [
+        0.0,
+        0.125,
+        0.25
+      ],
+      "nominal_step": 0.125
+    }
+  },
+  "constraints": {
+    "minimum_cash_to_revenue": 0.03,
+    "maximum_action_cost_and_incremental_interest_to_revenue": 0.03,
+    "maximum_combined_grid_debt_to_revenue": 0.25,
+    "m1f1_maximum_new_debt_to_revenue": 0.3,
+    "maximum_interest_bearing_debt_to_assets": 0.75,
+    "minimum_interest_coverage": 1.2,
+    "accounting_check_count": 17,
+    "accounting_residual_tolerance_cny_10k": 0.01
+  },
+  "sensitivity_cases": [
+    {
+      "name": "conservative",
+      "effect_multiplier": 0.85,
+      "collection_cost_rate": 0.03,
+      "inventory_action_cost_rate": 0.045,
+      "expense_change_implementation_cost_rate": 0.15,
+      "debt_financing_fee_rate": 0.015,
+      "short_term_interest_rate": 0.06,
+      "long_term_interest_rate": 0.054
+    },
+    {
+      "name": "neutral",
+      "effect_multiplier": 1.0,
+      "collection_cost_rate": 0.02,
+      "inventory_action_cost_rate": 0.03,
+      "expense_change_implementation_cost_rate": 0.1,
+      "debt_financing_fee_rate": 0.01,
+      "short_term_interest_rate": 0.05,
+      "long_term_interest_rate": 0.045
+    },
+    {
+      "name": "optimistic",
+      "effect_multiplier": 1.1,
+      "collection_cost_rate": 0.01,
+      "inventory_action_cost_rate": 0.015,
+      "expense_change_implementation_cost_rate": 0.05,
+      "debt_financing_fee_rate": 0.005,
+      "short_term_interest_rate": 0.04,
+      "long_term_interest_rate": 0.036
+    }
+  ],
+  "selection_rules": {
+    "best": "maximum_score_delta_then_minimum_action_cost_then_decision_id",
+    "low_cost_improving": "minimum_positive_action_cost_then_maximum_score_delta_then_decision_id",
+    "pareto": "non_dominated_on_minimum_action_cost_and_maximum_score_delta",
+    "minimum_improvement": 1e-12
+  },
+  "expected_counts": {
+    "raw_combinations_per_company": 2430,
+    "enumerated_combinations_per_company_per_case": 1620,
+    "neutral_candidate_evaluations": 4860,
+    "all_sensitivity_candidate_evaluations": 14580
+  },
+  "resource_limits": {
+    "maximum_candidate_evaluations": 14580,
+    "maximum_elapsed_seconds": 300,
+    "maximum_output_bytes": 150000000
+  },
+  "pre_search_reduction_rule": "Operating-rate targets stop below static scenario engine hard maxima so the optimistic 1.10 multiplier remains within the validated action bounds. Combined grid debt is capped at 25% of revenue, below the static scenario engine 30% hard limit. No candidate may be deleted after scoring."
+}
